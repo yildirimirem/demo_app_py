@@ -84,11 +84,23 @@ jobs:
           pip install pip-audit
           pip-audit
 
-  docker:
-
-    runs-on: ubuntu-latest
-
-    needs: security
+   static-analysis:
+      runs-on: ubuntu-latest
+      needs: test
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-python@v5
+          with:
+              python-version: "3.12"
+        - name: Install dependencies
+          run: pip install -r requirements.txt
+        - name: Run static analysis
+          run: |
+            pip install bandit
+            bandit -r . -ll  
+   docker:
+      runs-on: ubuntu-latest
+      needs: [security, static-analysis]
 
     steps:
 
