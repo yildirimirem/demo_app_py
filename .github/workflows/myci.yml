@@ -83,9 +83,9 @@ jobs:
 
       - name: Build Docker image
 
-        run: docker build -t devops-demo .
+        run: docker build -t devops-demo:${{ github.sha }} .
 
       - name: Run application inside container
 
-        run: docker run devops-demo
+        run: docker run devops-demo:${{ github.sha }}
  
