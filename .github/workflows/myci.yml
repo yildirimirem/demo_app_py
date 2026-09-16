@@ -88,7 +88,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    needs: test
+    needs: security
 
     steps:
 
