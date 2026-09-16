@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
 
-permission:
+permissions:
   contents: read
   pull_request: write
 
